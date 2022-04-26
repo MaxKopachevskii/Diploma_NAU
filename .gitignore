@@ -1,0 +1,17 @@
+**/*.suo
+**/*.user
+**/.vs
+**/node_modules
+**/typings
+**/dist
+**/bin
+**/obj
+**/Actual.*
+**/UpgradeLog*.htm
+**/.sonarlint
+**/.idea
+**/sitePublish
+**/*.js
+**/*.js.map
+tslint.json
+.nupackages

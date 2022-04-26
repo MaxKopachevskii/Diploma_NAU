@@ -1,0 +1,48 @@
+﻿@model System.Collections.Generic.IEnumerable<ASP.NET_Core_TicketStore.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Basket";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="" asp-controller="Tickets" asp-action="AllFavoriteTickets">Головна</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Кошик</li>
+    </ol>
+</nav>
+<div style="text-align: center;" ><h3>Кошик</h3></div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-controller="Tickets" asp-action="TicketOutBasket" asp-route-id="@item.Id">
+                    <svg class="bi bi-trash" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z" />
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a class="btn btn-lg btn-danger" asp-controller="TicketOrders" asp-action="CreateOrderForm">Оформити замовлення</a>

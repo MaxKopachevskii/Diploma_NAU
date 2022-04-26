@@ -1,0 +1,86 @@
+﻿@model ASP.NET_Core_TicketStore.Models.Ticket
+
+@{
+    ViewData["Title"] = "DetailsTicket";
+}
+
+@{
+    string color = "";
+    string disable = "";
+    if (Model.AvailableNumberOfSeats >= 3)
+    {
+        color = "green";
+    }
+    if (Model.AvailableNumberOfSeats < 3 && Model.AvailableNumberOfSeats > 0)
+    {
+        color = "orange";
+    }
+    if (Model.AvailableNumberOfSeats == 0)
+    {
+        color = "red";
+        disable = "disabled";
+    }
+}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Tickets" asp-action="AllFavoriteTickets">Головна</a></li>
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Tickets" asp-action="AllTickets">Всі маршрути</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+        </ol>
+    </nav>
+
+<h3>@Model.Name</h3>
+<br />
+<div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4">
+        <img style="width: 22rem;" src="@Model.Img" class="card-img-top" alt="...">
+    </div>
+    <div class="col mb-4">
+        <p style="font-size:1.1em;">Ціна з людини: <i><strong>@Model.Price грн.</strong></i></p>
+        <p style="font-size:1.1em; color:@color"><i><strong>@Model.AvailableNumberOfSeats місць в наявності</strong></i></p>
+        <a class="btn btn-lg btn-danger @disable" asp-controller="Tickets" asp-action="TicketInBasket" asp-route-id="@Model.Id">
+            <svg class="bi bi-bucket" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 1.5A4.5 4.5 0 003.5 6h-1a5.5 5.5 0 1111 0h-1A4.5 4.5 0 008 1.5z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M1.61 5.687A.5.5 0 012 5.5h12a.5.5 0 01.488.608l-1.826 8.217a1.5 1.5 0 01-1.464 1.175H4.802a1.5 1.5 0 01-1.464-1.175L1.512 6.108a.5.5 0 01.098-.42zm1.013.813l1.691 7.608a.5.5 0 00.488.392h6.396a.5.5 0 00.488-.392l1.69-7.608H2.624z" clip-rule="evenodd" />
+            </svg>
+            Додати в кошик
+        </a>
+        <br /><br />
+        <p style="font-size:1.1em;">Звідки:&nbsp;<i>@Model.From</i></p>
+        <p style="font-size:1.1em;">Куди:&nbsp;<i>@Model.To</i></p>
+        <p style="font-size:1.1em;">Авіакомпанія:&nbsp;<i>@Model.Airline?.Name</i></p>
+    </div>
+    <div class="col mb-4">
+    </div>
+    <div class="col mb-4">
+    </div>
+</div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a style="font-size:1.1em; color:black;" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Опис маршруту</a>
+    </li>
+    <li class="nav-item">
+        <a style="font-size:1.1em; color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Про нас</a>
+    </li>
+    <li class="nav-item">
+        <a style="font-size:1.1em; color:black;" class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Контакти</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div style="font-size:1.1em;" class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Desc</div>
+    <div style="font-size:1.1em;" class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!!!</div>
+    <div style="font-size:1.1em;" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br />
+       <pre style="font-size:1.1em;">
+Графік работы кол центру:
+Понеділок - Пятница : с 9-00 до 18-00
+Суббота - Неділя : 10-00 - 16-00
+
+- (066) 500-30-10
+- (096) 001-23-23
+- e-mail:ticketstore@gmail.com
+       </pre>
+    </div>
+</div>
+
+

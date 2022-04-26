@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ASP.NET_Core_TicketStore.Models.Ticket>
+
+@{
+    ViewData["Title"] = "AdminPanel";
+}
+
+<div style="text-align: center;" ><h4>Панель адміністратора</h4></div>
+
+<p>
+    <a class="btn btn-dark" asp-controller="Tickets" asp-action="CreateTicket">Додати</a>
+    <a class="btn btn-warning" asp-controller="TicketOrders" asp-action="GetAllOrders">Подивитися всі замовлення</a>
+    <a class="btn btn-danger" asp-controller="TicketCategories" asp-action="AllCategories">Редактор категорій</a>
+    <a class="btn btn-info" asp-controller="Airlines" asp-action="AllAirlines">Редактор авіакомпаній</a>
+    <a class="btn btn-primary" asp-controller="SeatCategories" asp-action="AllCategories">Редактор классу місць</a>
+</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Desc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.To)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.From)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsFavorite)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TicketCategory.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Desc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.To)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.From)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsFavorite)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketCategory.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Змінити", "EditTicket", new { id = item.Id }, new { @class = "btn btn-dark"})<br/><br />
+                        @Html.ActionLink("Детальніше", "DetailsTicket", new { id = item.Id }, new { @class = "btn btn-dark" })<br /><br />
+                        @Html.ActionLink("Видалити", "DeleteTicket", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

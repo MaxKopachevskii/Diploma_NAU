@@ -1,0 +1,82 @@
+﻿@model ASP.NET_Core_TicketStore.Models.Ticket
+
+@{
+    ViewData["Title"] = "EditTicket";
+}
+
+<br />
+<div style="text-align: center;"><h4>Изменение даных о книге</h4></div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditTicket">
+                               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                               <div class="form-group">
+                                   <label asp-for="Name" class="control-label"></label>
+                                   <input asp-for="Name" class="form-control" />
+                                   <span asp-validation-for="Name" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <label asp-for="Desc" class="control-label"></label>
+                                   <input asp-for="Desc" class="form-control" />
+                                   <span asp-validation-for="Desc" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <label asp-for="From" class="control-label"></label>
+                                   <input asp-for="From" class="form-control" />
+                                   <span asp-validation-for="From" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <label asp-for="To" class="control-label"></label>
+                                   <input asp-for="To" class="form-control" />
+                                   <span asp-validation-for="To" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <label asp-for="AvailableNumberOfSeats" class="control-label"></label>
+                                   <input asp-for="AvailableNumberOfSeats" class="form-control" />
+                                   <span asp-validation-for="AvailableNumberOfSeats" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <label asp-for="Price" class="control-label"></label>
+                                   <input asp-for="Price" class="form-control" />
+                                   <span asp-validation-for="Price" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <label asp-for="Img" class="control-label"></label>
+                                   <input asp-for="Img" class="form-control" />
+                                   <span asp-validation-for="Img" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <label asp-for="TicketCategoryId" class="control-label"></label>
+                                   <input asp-for="TicketCategoryId" class="form-control" />
+                                   <span asp-validation-for="TicketCategoryId" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <label asp-for="AirlineId" class="control-label"></label>
+                                   <input asp-for="AirlineId" class="form-control" />
+                                   <span asp-validation-for="AirlineId" class="text-danger"></span>
+                               </div>
+                               <div class="form-group form-check">
+                                   <label class="form-check-label">
+                                       <input class="form-check-input" asp-for="IsFavorite" /> @Html.DisplayNameFor(model => model.IsFavorite)
+                                   </label>
+                               </div>
+                               <div class="form-group form-check">
+                                   <label class="form-check-label">
+                                       <input class="form-check-input" asp-for="InBasket" /> @Html.DisplayNameFor(model => model.InBasket)
+                                   </label>
+                               </div>
+                <div class="form-group">
+                    <input type="submit" value="Зберегти зміни" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-dark" asp-action="AdminPanel">Назад</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

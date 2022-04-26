@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ASP.NET_Core_TicketStore</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid" style="width:85%; margin-left:7.5%; margin-right:7.5%;">
+                <a style="font-family:'Comic Sans MS'; font-size:2.3em;" class="navbar-brand" asp-controller="Tickets" asp-action="AllFavoriteTickets">
+                    @*<img src="~/images/logo8.jpg" height="75", width="75"/>*@
+                    <span style="color:#ffffff">TicketStore</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item dropdown">
+                            <a style="font-size:1.2em; font-family: 'Comic Sans MS'; color:#0022ff" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Каталог
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Tickets" asp-action="AllTickets">Всі маршрути</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="AllProgrammingBooks">???</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="AllPsyhologyBooks">???</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="AllLiteratureBooks">???</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="AllMedicalBooks">???</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="AllFantasticBooks">???</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="Tickets" asp-action="Privacy">Про нас</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a style="font-size:1.2em; font-family: 'Comic Sans MS'; color:#ffffff" class="nav-link" asp-area="" asp-controller="Tickets" asp-action="AllFavoriteTickets">Головна</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="font-size:1.2em; font-family: 'Comic Sans MS'; color:#0022ff" class="nav-link" asp-area="" asp-controller="Tickets" asp-action="Contact">Контакти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="font-size:1.2em; font-family: 'Comic Sans MS'; color:#ffffff" class="nav-link" asp-area="" asp-controller="Tickets" asp-action="Delivery">Оплата</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="font-size:1.2em; font-family: 'Comic Sans MS'; color:#0022ff" class="nav-link" asp-area="" asp-controller="Tickets" asp-action="Privacy">Про нас</a>
+                        </li>
+                        @*Admin2000_*@
+                        @if (User.Identity.Name == "admin@gmail.com")
+                        {
+                            <li class="nav-item">
+                                 <a style="font-size:1.2em; font-family: 'Comic Sans MS'; color:#ffffff" class="nav-link" asp-area="" asp-controller="Tickets" asp-action="AdminPanel">Адмін панель</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid" style="width:85%; margin-left:7.5%; margin-right:7.5%;">
+        <main role="main" class="pb-3">
+            <a style="float:right" class="btn btn-lg btn-primary" asp-controller="Tickets" asp-action="Basket">
+                <svg class="bi bi-bucket" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 1.5A4.5 4.5 0 003.5 6h-1a5.5 5.5 0 1111 0h-1A4.5 4.5 0 008 1.5z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M1.61 5.687A.5.5 0 012 5.5h12a.5.5 0 01.488.608l-1.826 8.217a1.5 1.5 0 01-1.464 1.175H4.802a1.5 1.5 0 01-1.464-1.175L1.512 6.108a.5.5 0 01.098-.42zm1.013.813l1.691 7.608a.5.5 0 00.488.392h6.396a.5.5 0 00.488-.392l1.69-7.608H2.624z" clip-rule="evenodd" />
+                </svg>
+                Кошик
+            </a>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-dark">
+        <div class="container-fluid" style="width:85%; margin-left:7.5%; margin-right:7.5%;">
+            &copy; 2022 - TicketStore - <a class="text-light" asp-area="" asp-controller="Tickets" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

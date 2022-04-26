@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-ASP.NET_Core_BookStore-992AF1F5-C59F-4CE8-948C-B4B79258B2A5</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Books\AdminPanel.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\AllBooks.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\AllFantasticBooks.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\AllFavoriteBooks.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\AllLiteratureBooks.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\AllMedicalBooks.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\AllProgrammingBooks.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\AllPsyhologyBooks.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\Basket.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\Contact.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\CreateBook.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\Delivery.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\DetailsBook.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\EditBook.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Books\Privacy.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Categories\AllCategories.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Categories\CreateCategory.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Categories\EditCategory.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Orders\CreateOrderForm.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Orders\DetailsOrder.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Orders\GetAllOrders.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Orders\ShowNumberOfOrder.cshtml" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,33 @@
+﻿@model ASP.NET_Core_TicketStore.Models.TicketCategory
+
+@{
+    ViewData["Title"] = "CreateCategory";
+}
+
+<br />
+<div style="text-align: center;"><h4>Додавання нової категории</h4></div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDesc" class="control-label"></label>
+                <input asp-for="ShortDesc" class="form-control" />
+                <span asp-validation-for="ShortDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додати" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-dark" asp-action="AllCategories">Назад</a>
+</div>

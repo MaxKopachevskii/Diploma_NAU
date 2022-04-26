@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ASP.NET_Core_TicketStore.Models.SeatCategory>
+
+@{
+    ViewData["Title"] = "AllCategories";
+}
+
+<div>
+    <a class="btn btn-warning" asp-controller="Tickets" asp-action="AdminPanel">Назад</a>
+</div>
+
+<br />
+<div style="text-align: center;"><h4>Всі категорії</h4></div>
+<p>
+    <a class="btn btn-dark" asp-action="CreateCategory">Додати</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDesc)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDesc)
+            </td>
+            <td>
+                @Html.ActionLink("Редактувати", "EditCategory", new { id = item.Id }, new { @class = "btn btn-dark" }) 
+                @Html.ActionLink("Видалити", "DeleteCategory", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+

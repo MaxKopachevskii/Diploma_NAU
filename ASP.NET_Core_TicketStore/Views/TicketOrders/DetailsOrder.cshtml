@@ -1,0 +1,26 @@
+﻿@model ASP.NET_Core_TicketStore.Models.TicketOrder
+
+@{
+    ViewData["Title"] = "DetailsOrder";
+}
+<br />
+<div style="text-align: center;"><h4>Замовлення №@Model.Id</h4></div>
+<hr />
+<p><strong>Номер замовлення:</strong>&nbsp;@Model.Id</p>
+<p><strong>ФИО:</strong>&nbsp;@Model.FullName</p>
+<p><strong>Номер телефону:</strong>&nbsp;@Model.PhoneNumber</p>
+<p><strong>Email:</strong>&nbsp;@Model.Email</p>
+<p><strong>Кількість людей:</strong>&nbsp;@Model.NumberOfPersons</p>
+<p><strong>Дата вильоту:</strong>&nbsp;@Model.DepartureDate</p>
+<p><strong>Комментарії до замовлення:</strong>&nbsp;@Model.Comment</p>
+<p><strong>Дата замовлення:</strong>&nbsp;@Model.Date</p>
+<p><strong>Класс місць:</strong>&nbsp;@Model.SeatCategory?.Name</p>
+<p><strong>Замовлені квитки:</strong>&nbsp;</p>
+@foreach (var item in Model.OrderTickets)
+{
+   <p>&nbsp;&nbsp;&nbsp;@item.Name,&nbsp;&nbsp;&nbsp;Номер маршруту:&nbsp;@item.Id</p>
+}
+    
+<div>
+    <a class="btn btn-dark" asp-controller="TicketOrders" asp-action="GetAllOrders">Назад</a>
+</div>
