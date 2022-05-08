@@ -30,7 +30,7 @@
         </ol>
     </nav>
 
-<h3>@Model.Name</h3>
+@*<h3>@Model.Name</h3>
 <br />
 <div class="row row-cols-1 row-cols-md-3">
     <div class="col mb-4">
@@ -55,10 +55,37 @@
     </div>
     <div class="col mb-4">
     </div>
+</div>*@
+
+<div class="card text-center">
+    <div class="card-header">
+        <h4>@Model.Name</h4>
+    </div>
+    <div class="card-body">
+        <p style="font-size:1.2em;">Ціна з людини: <i><strong>@Model.Price грн.</strong></i></p>
+        <p style="font-size:1.2em;">Звідки:&nbsp;<i>@Model.From</i></p>
+        <p style="font-size:1.2em;">Куди:&nbsp;<i>@Model.To</i></p>
+        <p style="font-size:1.2em;">Авіакомпанія:&nbsp;<i>@Model.Airline?.Name</i></p>
+        <a class="btn btn-lg btn-danger @disable" asp-controller="Tickets" asp-action="TicketInBasket" asp-route-id="@Model.Id">
+            <svg class="bi bi-bucket" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 1.5A4.5 4.5 0 003.5 6h-1a5.5 5.5 0 1111 0h-1A4.5 4.5 0 008 1.5z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M1.61 5.687A.5.5 0 012 5.5h12a.5.5 0 01.488.608l-1.826 8.217a1.5 1.5 0 01-1.464 1.175H4.802a1.5 1.5 0 01-1.464-1.175L1.512 6.108a.5.5 0 01.098-.42zm1.013.813l1.691 7.608a.5.5 0 00.488.392h6.396a.5.5 0 00.488-.392l1.69-7.608H2.624z" clip-rule="evenodd" />
+            </svg>
+            Додати в кошик
+        </a>
+    </div>
+    <div class="card-footer text-muted">
+        <p style="font-size:1.1em; color:@color"><i><strong>@Model.AvailableNumberOfSeats місць в наявності</strong></i></p>
+    </div>
 </div>
+<br /><br />
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a style="font-size:1.1em; color:black;" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Опис маршруту</a>
+        <a style="font-size:1.1em; color:black;" class="nav-link active" id="photo-tab" data-toggle="tab" href="#photo" role="tab" aria-controls="photo" aria-selected="true">Фотогалерея</a>
+    </li>
+    <li class="nav-item">
+        <a style="font-size:1.1em; color:black;" class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Опис маршруту</a>
     </li>
     <li class="nav-item">
         <a style="font-size:1.1em; color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Про нас</a>
@@ -68,8 +95,14 @@
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-    <div style="font-size:1.1em;" class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Desc</div>
-    <div style="font-size:1.1em;" class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!!!</div>
+    <div style="font-size:1.1em;" class="tab-pane fade show active" id="photo" role="tabpanel" aria-labelledby="photo-tab"><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="@Model.Img" class="img-fluid" alt="...">
+        <br/>
+    </div>
+    <div style="font-size:1.1em;" class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab"><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Desc</div>
+    <div style="font-size:1.1em;" class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @Model.Airline?.ShortDesc
+    </div>
     <div style="font-size:1.1em;" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br />
        <pre style="font-size:1.1em;">
 Графік работы кол центру:
