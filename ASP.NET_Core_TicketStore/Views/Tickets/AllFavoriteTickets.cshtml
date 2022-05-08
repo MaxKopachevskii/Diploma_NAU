@@ -97,6 +97,24 @@
         </div>
     }
 </div>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="AllFavoriteTickets"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="btn btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="AllFavoriteTickets"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="btn btn-outline-dark">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}
 <br />
 <div class="text-center">
     <h2>Про можливості системи</h2>
@@ -145,30 +163,13 @@
     </div>
 </div>
 
-@if (Model.PageViewModel.HasPreviousPage)
-{
-    <a asp-action="AllFavoriteTickets"
-       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
-       class="btn btn-outline-dark">
-        <i class="glyphicon glyphicon-chevron-left"></i>
-        Назад
-    </a>
-}
-@if (Model.PageViewModel.HasNextPage)
-{
-    <a asp-action="AllFavoriteTickets"
-       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
-       class="btn btn-outline-dark">
-        Вперед
-        <i class="glyphicon glyphicon-chevron-right"></i>
-    </a>
-}
 <br />
 <h2>Информація про TicketStore</h2>
 <hr />
 <pre style="font-size:1.3em;">
-   TicketStore - це застосунок для аеропорту "Жуляни", який орієнтований на потребності туристів. Завдяки застосунку користувач може обрати маршрут який його
-цікавить та забронювати авіаквитки онлайн. Також для туристів є топ маршрутів та цікаві описи місць куди можна подорожувати. 
+    TicketStore - це застосунок для аеропорту "Жуляни", який орієнтований на потребності туристів. Завдяки застосунку користувач може
+обрати маршрут який його цікавить та забронювати авіаквитки онлайн. Також для туристів є топ маршрутів та цікаві описи місць куди 
+можна подорожувати. 
 Бажаюємо приємного відпочинку та чудової подорожі разом з TicketStore!!!
 </pre>
 

@@ -1,0 +1,92 @@
+﻿@model ASP.NET_Core_TicketStore.Models.TicketIndexViewModel
+
+@{
+    ViewData["Title"] = "Маршрути з дивовижною природою";
+}
+
+<style>
+    @@font-face {
+        font-family: 'FontAwesome';
+        src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal
+    }
+
+    .glyphicon {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+    }
+
+    .glyphicon-chevron-right:before {
+        content: "\f054";
+    }
+
+    .glyphicon-chevron-left:before {
+        content: "\f053";
+    }
+</style>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="" asp-controller="Tickets" asp-action="AllFavoriteTickets">Головна</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Маршрути з дивовижною природою</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-md-12" style="float:right;">
+        <form asp-action="AllTickets">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Search" class="form-control col-md-12" placeholder="Пошук по сайту..." />
+                <span asp-validation-for="Search" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Знайти" class="btn btn-primary col-md-12" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    @foreach (var item in Model.Tickets)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="card" style="width: 24rem;">
+                <img src="@item.Img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">Ціна:&nbsp;<strong>@item.Price грн.</strong></p>
+                    <p class="card-text">Авіакомпанія:&nbsp;@item.Airline?.Name</p>
+                    <div style="height:50px;"><a class="btn btn-lg btn-danger" asp-controller="Tickets" asp-action="DetailsTicket" asp-route-id="@item.Id">Детальніше</a></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="AllTickets"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="btn btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="AllTickets"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="btn btn-outline-dark">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}
+
+
