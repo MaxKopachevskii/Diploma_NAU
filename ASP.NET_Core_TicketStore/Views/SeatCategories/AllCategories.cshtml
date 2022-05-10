@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.ShortDesc)
             </td>
             <td>
-                @Html.ActionLink("Редактувати", "EditCategory", new { id = item.Id }, new { @class = "btn btn-dark" }) 
+                @Html.ActionLink("Редактувати", "EditCategory", new { id = item.Id }, new { @class = "btn btn-dark" })<br/><br /> 
                 @Html.ActionLink("Видалити", "DeleteCategory", new { id = item.Id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
